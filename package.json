@@ -2,7 +2,7 @@
   "name": "danyg-go-to-test",
   "displayName": "Go To Test",
   "description": "Toggle between test and file with different strategies",
-  "version": "1.1.1",
+  "version": "1.1.7",
   "repository": {
     "url": "https://github.com/danyg/go-to-test.git",
     "type": "git"
@@ -50,6 +50,7 @@
           "enum": [
             "maven-like",
             "maven",
+            "ruby",
             "same-directory",
             "__tests__",
             "custom"
@@ -57,11 +58,17 @@
           "markdownEnumDescriptions": [
             "Maven Like style, where the test files are in a different directory (test instead of src) at project root level with the same directory structure as the source files and `.test.` and same extension.",
             "Maven style, where the test files are in a different directory (test instead of main) at src level with the same directory structure as the source files and `.test.` and same extension.",
+            "Ruby style.",
             "Same directory style, where the test files are in the same directory as the source file, with the extra `.test.` and same extension.",
             "__tests__ directory style, where the test are inside of a `__tests__` directory inside the same directory as the source file.",
             "Custom, you must define `#goToTest.match#` and `#goToTest.replace#`"
           ],
           "description": "Strategy to be used to locate or create the test file."
+        },
+        "goToTest.fileStrategyMapping": {
+          "type": "object",
+          "default": {},
+          "markdownDescription": "Specify a file extension -> strategy"
         },
         "goToTest.match": {
           "type": "string",
