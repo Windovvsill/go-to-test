@@ -1,10 +1,11 @@
 import Strategy from 'interfaces/strategy';
 
-const testPattern = /^(?<filePath>.*)\.test\.(?<ext>[^\.]+)$/;
+const testPattern = /^(?<filePath>.*)\.spec\.(?<ext>[^\.]+)$/;
 const sourcePattern = /^(?<filePath>.*)\.(?<ext>[^\.]+)$/;
 
 const sourceTemplate = '$<filePath>.$<ext>';
-const testTemplate = '$<filePath>.test.$<ext>';
+const testTemplate = '$<filePath>.spec.$<ext>';
+
 export default class SameDirectoryStrategy implements Strategy {
   public static getInstance() {
     return new SameDirectoryStrategy();

@@ -37,3 +37,7 @@ When the test file is not found it will create one
 - Confirm on Create file
 
 Check [backlog](https://github.com/danyg/go-to-test/projects/1) for more information
+
+## Build locally
+
+`npm version patch --no-commit --force && vsce package`

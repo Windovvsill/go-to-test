@@ -7,6 +7,7 @@ import Configuration, { StrategyOption } from 'interfaces/configuration';
 import UIMock from './mocks/ui-mock';
 import SystemDouble from './mocks/system-double';
 import { ConfigurationDouble } from './mocks/configuration-double';
+import { WindowDouble } from './mocks/window-double';
 
 export const defaultConfiguration = ConfigurationDouble.getInstance().withStrategy(
   StrategyOption.MAVEN_LIKE
@@ -35,11 +36,14 @@ export class TestBuilder {
     return this;
   }
 
-  private buildTestSubject(configuration: Configuration = defaultConfiguration) {
+  private buildTestSubject(
+    configuration: Configuration = defaultConfiguration,
+    window = new WindowDouble(true)
+  ) {
     resetCalls(UIMock);
     this.system = new SystemDouble();
     this.ui = instance(UIMock);
-    this.testSubject = new GoToTest(this.system, this.ui, configuration);
+    this.testSubject = new GoToTest(this.system, this.ui, configuration, window);
   }
 
   private getContextDouble(): ExtensionContext {

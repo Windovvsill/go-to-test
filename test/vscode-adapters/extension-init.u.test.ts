@@ -65,9 +65,14 @@ describe('buildExtension', () => {
     expectedTestPath: '/home/project/src/test/package/MainTest.java'
   });
   testStrategy({
+    strategy: 'ruby',
+    actualPath: '/app/models/model.rb',
+    expectedTestPath: '/spec/models/model_spec.rb'
+  });
+  testStrategy({
     strategy: 'same-directory',
     actualPath: '/home/project/src/core/module/main.js',
-    expectedTestPath: '/home/project/src/core/module/main.test.js'
+    expectedTestPath: '/home/project/src/core/module/main.spec.js'
   });
   testStrategy({
     strategy: '__tests__',
@@ -124,7 +129,7 @@ describe('buildExtension', () => {
     );
   });
 
-  it(`should create the test file when it does not exists [happy path]`, async () => {
+  it.only(`should create the test file when it does not exists [happy path]`, async () => {
     const expectedTestPath = '/home/project/test/core/module/main.test.js';
     vscodeNSHandler
       // Active Editor

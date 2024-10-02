@@ -1,6 +1,10 @@
 import Configuration, { StrategyOption } from 'interfaces/configuration';
 
 export class ConfigurationDouble implements Configuration {
+  public get fileStrategyMapping(): Record<string, StrategyOption> {
+    return {};
+  }
+
   static getInstance() {
     return new ConfigurationDouble();
   }
@@ -27,7 +31,7 @@ export class ConfigurationDouble implements Configuration {
   }
 
   withInvalidStrategy() {
-    this._strategy = 88;
+    this._strategy = '88' as StrategyOption;
     return this;
   }
 

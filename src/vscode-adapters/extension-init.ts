@@ -11,7 +11,8 @@ export function buildExtension(
   const goToTestExtension = new GoToTest(
     VsCodeSystem.getInstance(vscode),
     VSCodeUI.getInstance(vscode),
-    VSCodeConfiguration.getInstance(vscode)
+    VSCodeConfiguration.getInstance(vscode),
+    vscode.window
   );
 
   return {

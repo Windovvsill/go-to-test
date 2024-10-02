@@ -14,7 +14,7 @@ describe('Same Directory Strategy', () => {
 
     await when.goToTestIsActioned();
 
-    then.theTestFile('/src/module/sub-module/sub-sub-module/my-file.test.js').isOpened();
+    then.theTestFile('/src/module/sub-module/sub-sub-module/my-file.spec.js').isOpened();
   });
 
   it('should use same-directory strategy WHEN the configuration says so and it works with Windows Paths', async () => {
@@ -28,7 +28,7 @@ describe('Same Directory Strategy', () => {
     await when.goToTestIsActioned();
 
     then
-      .theTestFile('C:\\Project\\src\\module\\sub-module\\sub-sub-module\\my-file.test.js')
+      .theTestFile('C:\\Project\\src\\module\\sub-module\\sub-sub-module\\my-file.spec.js')
       .isOpened();
   });
 
@@ -38,7 +38,7 @@ describe('Same Directory Strategy', () => {
       .theFollowingConfiguration(
         ConfigurationDouble.getInstance().withStrategy(StrategyOption.SAME_DIRECTORY)
       )
-      .and.theUserOpens('/src/module/sub-module/sub-sub-module/my-file.test.js');
+      .and.theUserOpens('/src/module/sub-module/sub-sub-module/my-file.spec.js');
 
     await when.goToTestIsActioned();
 

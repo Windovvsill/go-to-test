@@ -17,6 +17,10 @@ class VSCodeConfig {
     await this.setConfig('goToTest.strategy', 'same-directory');
   }
 
+  public async withFileStrategyMapping() {
+    await this.setConfig('goToTest.fileStrategyMapping', { rb: 'ruby', tsx: 'same-directory' });
+  }
+
   public async withUnderscoreUnderscoreTestsUnderscoreUnderscoreStrategy() {
     await this.setConfig('goToTest.strategy', '__tests__');
   }
@@ -36,7 +40,7 @@ class VSCodeConfig {
     return this;
   }
 
-  private async setConfig(section: string, value: string) {
+  private async setConfig(section: string, value: unknown) {
     return vscode.workspace.getConfiguration().update(section, value);
   }
 }

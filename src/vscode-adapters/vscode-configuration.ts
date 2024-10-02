@@ -4,11 +4,13 @@ import { GetConfigurationFn, GoToTestVsCodeNS } from './types';
 const SECTIONS = {
   STRATEGY: 'goToTest.strategy',
   MATCH: 'goToTest.match',
-  REPLACE: 'goToTest.replace'
+  REPLACE: 'goToTest.replace',
+  FILE_STRATEGY_MAPPING: 'goToTest.fileStrategyMapping'
 };
 
 const strategyConfigToStrategyOption = new Map<string, StrategyOption>([
   ['maven-like', StrategyOption.MAVEN_LIKE],
+  ['ruby', StrategyOption.RUBY],
   ['maven', StrategyOption.MAVEN],
   ['same-directory', StrategyOption.SAME_DIRECTORY],
   ['__tests__', StrategyOption.__TESTS__],
@@ -28,6 +30,18 @@ export default class VSCodeConfiguration implements Configuration {
 
     const strategyConfig = this.getConfiguration().get(SECTIONS.STRATEGY) as string;
     return strategyConfigToStrategyOption.get(strategyConfig) ?? defaultValue;
+  }
+
+  public get fileStrategyMapping(): Record<string, StrategyOption> {
+    const strategyConfig = this.getConfiguration().get(SECTIONS.FILE_STRATEGY_MAPPING) as Record<
+      string,
+      StrategyOption
+    >;
+
+    // vscode.window
+    //   .createOutputChannel('Go To Test Init')
+    //   .appendLine(`Loading config: ${Object.entries(strategyConfig)}`);
+    return strategyConfig || {};
   }
 
   public get match(): RegExp {
