@@ -20,7 +20,19 @@ Available several common test file location strategies. Is recommended to save t
 | `maven-like`     | `src/feature/file.ts`<br>`test/feature/file.test.ts`     | <span style="color: green">✔</span> | <span style="color: green">✔</span> |
 | `custom`         | `configurable by regex`                                  | <span style="color: green">✔</span> |  <span style="color: red">✘</span>  |
 
-When the test file is not found it will create one
+Use a custom fileStrategyMapping to deploy different strategies per file type.
+
+```
+"goToTest.fileStrategyMapping": {
+  "rb": "ruby",
+  "ts": "same-directory",
+  "js": "same-directory",
+  "jsx": "same-directory",
+  "tsx": "same-directory"
+}
+```
+
+When the test file is not found it ask if you want to create one
 
 ## Features
 
